@@ -8,6 +8,7 @@ button { font-size:20px; margin:10px; padding:10px; }
 </style>
 </head>
 <body>
+  <audio id="soundHit" src="hit.mp3"></audio>
 
 <h1>⚔️ Ritter</h1>
 <img src="knight.jpg" width="200">
@@ -15,8 +16,10 @@ button { font-size:20px; margin:10px; padding:10px; }
 <h2>❤️ HP: <span id="hp"></span></h2>
 <h2>⚔️ Angriff: 2</h2>
 
-<button onclick="damage()">-1 Schaden</button>
-<button onclick="heal()">+1 Heilung</button>
+<button onclick="damage(1)">-1 Schaden</button>
+<button onclick="damage(2)">-2 Schaden</button>
+<button onclick="damage(5)">-5 Schaden</button>
+<button onclick="heal(1)">+1 Heilung</button>
 <button onclick="reset()">Reset</button>
 
 <script>
@@ -27,7 +30,8 @@ if(hp == null){
 }
 document.getElementById("hp").innerText = hp;
 
-function damage(){
+function damage(amount){
+  document.getElementById("soundHit").play();
   hp--;
   save();
 }
