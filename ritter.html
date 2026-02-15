@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ritter</title>
+<style>
+body { font-family: Arial; text-align:center; background:#222; color:white; }
+button { font-size:20px; margin:10px; padding:10px; }
+</style>
+</head>
+<body>
+
+<h1>⚔️ Ritter</h1>
+<img src="https://i.imgur.com/4AiXzf8.jpeg" width="200">
+
+<h2>HP: <span id="hp"></span></h2>
+
+<button onclick="damage()">-1 Schaden</button>
+<button onclick="heal()">+1 Heilung</button>
+<button onclick="reset()">Reset</button>
+
+<script>
+let hp = localStorage.getItem("ritterHP");
+
+if(hp == null){
+  hp = 20;
+}
+document.getElementById("hp").innerText = hp;
+
+function damage(){
+  hp--;
+  save();
+}
+function heal(){
+  hp++;
+  save();
+}
+function reset(){
+  hp = 20;
+  save();
+}
+function save(){
+  localStorage.setItem("ritterHP", hp);
+  document.getElementById("hp").innerText = hp;
+}
+</script>
+
+</body>
+</html>
